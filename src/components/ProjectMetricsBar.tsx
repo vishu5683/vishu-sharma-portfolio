@@ -11,7 +11,7 @@ import {
   Legend,
 } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
-import { Box, Typography, useTheme } from '@mui/material'
+import { Box } from '@mui/material'
 import { motion } from 'framer-motion'
 
 ChartJS.register(
@@ -62,7 +62,7 @@ const options = {
       borderColor: 'rgba(99, 102, 241, 1)',
       borderWidth: 1,
       callbacks: {
-        label: function(context: any) {
+        label: function(context: { parsed: { y: number } }) {
           return `${context.parsed.y}% Performance Improvement`
         },
       },
@@ -77,7 +77,7 @@ const options = {
         color: 'rgba(0, 0, 0, 0.7)',
         font: {
           size: 12,
-          weight: '600' as const,
+          weight: 'bold',
         },
       },
     },
@@ -92,7 +92,7 @@ const options = {
         font: {
           size: 12,
         },
-        callback: function(value: any) {
+        callback: function(value: number) {
           return value + '%'
         },
       },
@@ -101,7 +101,6 @@ const options = {
 }
 
 export default function ProjectMetricsBar() {
-  const theme = useTheme()
 
   return (
     <motion.div
@@ -119,7 +118,7 @@ export default function ProjectMetricsBar() {
           },
         }}
       >
-        <Bar data={projectData} options={options} />
+        <Bar data={projectData} options={options as Record<string, unknown>} />
       </Box>
     </motion.div>
   )

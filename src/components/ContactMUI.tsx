@@ -5,14 +5,12 @@ import {
   Box,
   Container,
   Typography,
-  Grid,
   Card,
   CardContent,
   TextField,
   Button,
   Stack,
   useTheme,
-  useMediaQuery,
   IconButton,
   Snackbar,
   Alert,
@@ -43,7 +41,6 @@ const ContactMUI = () => {
     severity: 'success' as 'success' | 'error' | 'warning' | 'info',
   })
   const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
   useEffect(() => {
     setMounted(true)
@@ -87,7 +84,7 @@ const ContactMUI = () => {
       
       setSnackbar({
         open: true,
-        message: 'Message sent successfully! I\'ll get back to you soon.',
+        message: 'Message sent successfully! I&apos;ll get back to you soon.',
         severity: 'success',
       })
       
@@ -98,7 +95,7 @@ const ContactMUI = () => {
         subject: '',
         message: '',
       })
-    } catch (error) {
+    } catch {
       setSnackbar({
         open: true,
         message: 'Failed to send message. Please try again.',
@@ -259,13 +256,13 @@ const ContactMUI = () => {
                 mx: 'auto',
               }}
             >
-              Let's discuss your next project or just say hello!
+              Let&apos;s discuss your next project or just say hello!
             </Typography>
           </motion.div>
 
-          <Grid container spacing={6}>
+          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 6 }}>
             {/* Contact Information */}
-            <Grid item xs={12} md={4}>
+            <Box sx={{ flex: { xs: 1, md: '0 0 33.333%' } }}>
               <motion.div variants={itemVariants}>
                 <Card
                   sx={{
@@ -284,7 +281,7 @@ const ContactMUI = () => {
                       Contact Information
                     </Typography>
                     <Stack spacing={3}>
-                      {contactInfo.map((info, index) => (
+                      {contactInfo.map((info) => (
                         <motion.div
                           key={info.title}
                           whileHover={{ scale: 1.02, x: 8 }}
@@ -368,10 +365,10 @@ const ContactMUI = () => {
                   </CardContent>
                 </Card>
               </motion.div>
-            </Grid>
+            </Box>
 
             {/* Contact Form */}
-            <Grid item xs={12} md={8}>
+            <Box sx={{ flex: 1 }}>
               <motion.div variants={itemVariants}>
                 <Card
                   sx={{
@@ -403,55 +400,57 @@ const ContactMUI = () => {
                     </Box>
 
                     <form onSubmit={handleSubmit}>
-                      <Grid container spacing={3}>
-                        <Grid item xs={12} sm={6}>
-                          <TextField
-                            fullWidth
-                            label="Name"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleInputChange}
-                            required
-                            variant="outlined"
-                            sx={{
-                              '& .MuiOutlinedInput-root': {
-                                borderRadius: 2,
-                                '&:hover .MuiOutlinedInput-notchedOutline': {
-                                  borderColor: 'primary.main',
+                      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+                        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 3 }}>
+                          <Box sx={{ flex: 1 }}>
+                            <TextField
+                              fullWidth
+                              label="Name"
+                              name="name"
+                              value={formData.name}
+                              onChange={handleInputChange}
+                              required
+                              variant="outlined"
+                              sx={{
+                                '& .MuiOutlinedInput-root': {
+                                  borderRadius: 2,
+                                  '&:hover .MuiOutlinedInput-notchedOutline': {
+                                    borderColor: 'primary.main',
+                                  },
+                                  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                                    borderColor: 'primary.main',
+                                    borderWidth: 2,
+                                  },
                                 },
-                                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                                  borderColor: 'primary.main',
-                                  borderWidth: 2,
-                                },
-                              },
-                            }}
+                              }}
                           />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                          <TextField
-                            fullWidth
-                            label="Email"
-                            name="email"
-                            type="email"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                            required
-                            variant="outlined"
-                            sx={{
-                              '& .MuiOutlinedInput-root': {
-                                borderRadius: 2,
-                                '&:hover .MuiOutlinedInput-notchedOutline': {
-                                  borderColor: 'primary.main',
+                          </Box>
+                          <Box sx={{ flex: 1 }}>
+                            <TextField
+                              fullWidth
+                              label="Email"
+                              name="email"
+                              type="email"
+                              value={formData.email}
+                              onChange={handleInputChange}
+                              required
+                              variant="outlined"
+                              sx={{
+                                '& .MuiOutlinedInput-root': {
+                                  borderRadius: 2,
+                                  '&:hover .MuiOutlinedInput-notchedOutline': {
+                                    borderColor: 'primary.main',
+                                  },
+                                  '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                                    borderColor: 'primary.main',
+                                    borderWidth: 2,
+                                  },
                                 },
-                                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-                                  borderColor: 'primary.main',
-                                  borderWidth: 2,
-                                },
-                              },
-                            }}
+                              }}
                           />
-                        </Grid>
-                        <Grid item xs={12}>
+                          </Box>
+                        </Box>
+                        <Box>
                           <TextField
                             fullWidth
                             label="Subject"
@@ -473,8 +472,8 @@ const ContactMUI = () => {
                               },
                             }}
                           />
-                        </Grid>
-                        <Grid item xs={12}>
+                        </Box>
+                        <Box>
                           <TextField
                             fullWidth
                             label="Message"
@@ -498,8 +497,8 @@ const ContactMUI = () => {
                               },
                             }}
                           />
-                        </Grid>
-                        <Grid item xs={12}>
+                        </Box>
+                        <Box>
                           <motion.div
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
@@ -527,14 +526,14 @@ const ContactMUI = () => {
                               Send Message
                             </Button>
                           </motion.div>
-                        </Grid>
-                      </Grid>
+                        </Box>
+                      </Box>
                     </form>
                   </CardContent>
                 </Card>
               </motion.div>
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
         </motion.div>
       </Container>
 

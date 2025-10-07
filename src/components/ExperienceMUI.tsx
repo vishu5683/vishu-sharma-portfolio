@@ -4,31 +4,20 @@ import {
   Box,
   Container,
   Typography,
-  Grid,
   Card,
   CardContent,
   Chip,
   Stack,
   Avatar,
-  Timeline,
-  TimelineItem,
-  TimelineSeparator,
-  TimelineConnector,
-  TimelineContent,
-  TimelineDot,
-  useTheme,
 } from '@mui/material'
 import {
   Work,
   School,
   Star,
-  TrendingUp,
   Code,
-  Storage,
 } from '@mui/icons-material'
 
 const ExperienceMUI = () => {
-  const theme = useTheme()
 
   const experiences = [
     {
@@ -129,9 +118,9 @@ const ExperienceMUI = () => {
         </Box>
 
         {/* Experience Timeline */}
-        <Grid container spacing={6} sx={{ mb: 8 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 6, mb: 8 }}>
           {experiences.map((exp, index) => (
-            <Grid item xs={12} key={index}>
+            <Box key={index}>
               <Card
                 sx={{
                   background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%)',
@@ -153,8 +142,8 @@ const ExperienceMUI = () => {
                   }}
                 />
                 <CardContent sx={{ p: 4 }}>
-                  <Grid container spacing={4} alignItems="flex-start">
-                    <Grid item xs={12} md={8}>
+                  <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, alignItems: 'flex-start' }}>
+                    <Box sx={{ flex: 1 }}>
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
                         <Avatar sx={{ backgroundColor: exp.color === 'primary' ? 'primary.main' : 'secondary.main' }}>
                           {exp.icon}
@@ -227,18 +216,18 @@ const ExperienceMUI = () => {
                           />
                         ))}
                       </Stack>
-                    </Grid>
-                  </Grid>
+                    </Box>
+                  </Box>
                 </CardContent>
               </Card>
-            </Grid>
+            </Box>
           ))}
-        </Grid>
+        </Box>
 
         {/* Education & Certifications */}
-        <Grid container spacing={4}>
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4 }}>
           {/* Education */}
-          <Grid item xs={12} md={6}>
+          <Box sx={{ flex: 1 }}>
             <Card sx={{ height: '100%' }}>
               <CardContent sx={{ p: 4 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
@@ -274,10 +263,10 @@ const ExperienceMUI = () => {
                 </Stack>
               </CardContent>
             </Card>
-          </Grid>
+            </Box>
 
-          {/* Certifications */}
-          <Grid item xs={12} md={6}>
+            {/* Certifications */}
+            <Box sx={{ flex: 1 }}>
             <Card sx={{ height: '100%' }}>
               <CardContent sx={{ p: 4 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
@@ -312,8 +301,8 @@ const ExperienceMUI = () => {
                 </Stack>
               </CardContent>
             </Card>
-          </Grid>
-        </Grid>
+            </Box>
+          </Box>
       </Container>
     </Box>
   )

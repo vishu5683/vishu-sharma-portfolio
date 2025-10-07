@@ -1,10 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
 import OpenAI from 'openai'
-import { supabase } from '@/lib/supabase'
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY, // Add your OpenAI API key to .env.local
-})
+// Initialize OpenAI only when API key is available
+const getOpenAI = () => {
+  if (!process.env.OPENAI_API_KEY) {
+    return null
+  }
+  return new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  })
+}
 
 export async function POST(request: NextRequest) {
   try {

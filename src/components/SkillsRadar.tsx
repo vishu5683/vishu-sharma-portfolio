@@ -11,7 +11,7 @@ import {
   Legend,
 } from 'chart.js'
 import { Radar } from 'react-chartjs-2'
-import { Box, Typography, useTheme } from '@mui/material'
+import { Box } from '@mui/material'
 import { motion } from 'framer-motion'
 
 ChartJS.register(
@@ -82,7 +82,6 @@ const options = {
 }
 
 export default function SkillsRadar() {
-  const theme = useTheme()
 
   return (
     <motion.div
@@ -100,7 +99,7 @@ export default function SkillsRadar() {
           },
         }}
       >
-        <Radar data={skillsData} options={options} />
+        <Radar data={skillsData} options={options as Record<string, unknown>} />
       </Box>
     </motion.div>
   )

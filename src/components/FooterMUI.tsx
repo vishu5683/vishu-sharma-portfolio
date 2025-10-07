@@ -4,11 +4,9 @@ import {
   Box,
   Container,
   Typography,
-  Grid,
   Stack,
   IconButton,
   Divider,
-  useTheme,
 } from '@mui/material'
 import {
   GitHub,
@@ -20,7 +18,6 @@ import {
 import { useState, useEffect } from 'react'
 
 const FooterMUI = () => {
-  const theme = useTheme()
   const [showScrollTop, setShowScrollTop] = useState(false)
 
   useEffect(() => {
@@ -98,9 +95,9 @@ const FooterMUI = () => {
         />
 
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-          <Grid container spacing={6}>
+          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 6 }}>
             {/* Brand Section */}
-            <Grid item xs={12} md={4}>
+            <Box sx={{ flex: 1 }}>
               <Box sx={{ mb: 4 }}>
                 <Typography
                   variant="h4"
@@ -141,10 +138,10 @@ const FooterMUI = () => {
                   ))}
                 </Stack>
               </Box>
-            </Grid>
+            </Box>
 
             {/* Quick Links */}
-            <Grid item xs={12} md={4}>
+            <Box sx={{ flex: 1 }}>
               <Box>
                 <Typography variant="h6" sx={{ mb: 3, fontWeight: 600 }}>
                   Quick Links
@@ -172,10 +169,10 @@ const FooterMUI = () => {
                   ))}
                 </Stack>
               </Box>
-            </Grid>
+            </Box>
 
             {/* Contact Info */}
-            <Grid item xs={12} md={4}>
+            <Box sx={{ flex: 1 }}>
               <Box>
                 <Typography variant="h6" sx={{ mb: 3, fontWeight: 600 }}>
                   Contact Info
@@ -203,8 +200,8 @@ const FooterMUI = () => {
                   </Box>
                 </Stack>
               </Box>
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
 
           <Divider sx={{ my: 6, borderColor: 'rgba(255, 255, 255, 0.1)' }} />
 

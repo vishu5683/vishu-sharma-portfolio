@@ -4,13 +4,10 @@ import {
   Box,
   Container,
   Typography,
-  Grid,
   Card,
   CardContent,
-  Chip,
   Stack,
   Avatar,
-  useTheme,
 } from '@mui/material'
 import {
   Code,
@@ -22,7 +19,6 @@ import {
 } from '@mui/icons-material'
 
 const AboutMUI = () => {
-  const theme = useTheme()
 
   const stats = [
     { icon: TrendingUp, label: 'Performance Improvement', value: '35%', description: 'Faster load times' },
@@ -68,9 +64,9 @@ const AboutMUI = () => {
           </Typography>
         </Box>
 
-        <Grid container spacing={4}>
+        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', lg: 'row' }, gap: 4 }}>
           {/* Left Column - Story */}
-          <Grid item xs={12} lg={6}>
+          <Box sx={{ flex: 1 }}>
             <Card sx={{ height: '100%' }}>
               <CardContent sx={{ p: 4 }}>
                 <Typography variant="h4" sx={{ mb: 3, fontWeight: 600 }}>
@@ -78,19 +74,19 @@ const AboutMUI = () => {
                 </Typography>
                 <Stack spacing={3}>
                   <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.7 }}>
-                    I'm a passionate Full Stack Developer with 2+ years of experience designing and delivering 
+                    I&apos;m a passionate Full Stack Developer with 2+ years of experience designing and delivering 
                     enterprise-grade web applications. My journey began with a strong foundation in Computer Science, 
                     earning both B.Sc. and MCA degrees, which provided me with deep technical knowledge.
                   </Typography>
                   <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.7 }}>
                     Currently working as a Software Development Engineer at Transport Corporation of India Ltd, 
-                    I've successfully migrated legacy .NET modules to modern React.js/Next.js applications, 
+                    I&apos;ve successfully migrated legacy .NET modules to modern React.js/Next.js applications, 
                     achieving 35% faster load times and significantly improving user experience.
                   </Typography>
                   <Typography variant="body1" color="text.secondary" sx={{ lineHeight: 1.7 }}>
                     My expertise spans the full technology stack - from frontend frameworks like React.js and Next.js 
                     to backend technologies including ASP.NET, Node.js, and database management with Oracle and PostgreSQL. 
-                    I'm also certified as a Meta Front-End Developer and have completed multiple specialized courses.
+                    I&apos;m also certified as a Meta Front-End Developer and have completed multiple specialized courses.
                   </Typography>
                 </Stack>
 
@@ -99,9 +95,9 @@ const AboutMUI = () => {
                   <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
                     Key Achievements
                   </Typography>
-                  <Grid container spacing={1}>
+                  <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                     {achievements.map((achievement, index) => (
-                      <Grid item xs={12} sm={6} key={index}>
+                      <Box key={index}>
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                           <Box
                             sx={{
@@ -115,16 +111,16 @@ const AboutMUI = () => {
                             {achievement}
                           </Typography>
                         </Box>
-                      </Grid>
+                      </Box>
                     ))}
-                  </Grid>
+                  </Box>
                 </Box>
               </CardContent>
             </Card>
-          </Grid>
+          </Box>
 
           {/* Right Column - Stats & Skills */}
-          <Grid item xs={12} lg={6}>
+          <Box sx={{ flex: 1 }}>
             <Stack spacing={4}>
               {/* Performance Stats */}
               <Card>
@@ -132,9 +128,9 @@ const AboutMUI = () => {
                   <Typography variant="h5" sx={{ mb: 3, fontWeight: 600 }}>
                     Impact Metrics
                   </Typography>
-                  <Grid container spacing={2}>
+                  <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2 }}>
                     {stats.map((stat, index) => (
-                      <Grid item xs={6} key={index}>
+                      <Box key={index} sx={{ flex: 1 }}>
                         <Card
                           sx={{
                             backgroundColor: 'primary.light',
@@ -157,9 +153,9 @@ const AboutMUI = () => {
                             {stat.description}
                           </Typography>
                         </Card>
-                      </Grid>
+                      </Box>
                     ))}
-                  </Grid>
+                  </Box>
                 </CardContent>
               </Card>
 
@@ -184,8 +180,8 @@ const AboutMUI = () => {
                 </CardContent>
               </Card>
             </Stack>
-          </Grid>
-        </Grid>
+          </Box>
+        </Box>
       </Container>
     </Box>
   )

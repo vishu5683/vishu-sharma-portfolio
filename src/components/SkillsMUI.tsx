@@ -5,16 +5,13 @@ import {
   Box,
   Container,
   Typography,
-  Grid,
   Card,
   CardContent,
   Chip,
   Stack,
   useTheme,
-  useMediaQuery,
 } from '@mui/material'
 import {
-  Code,
   Storage,
   Cloud,
   Security,
@@ -32,7 +29,6 @@ import SkillsRadar from './SkillsRadar'
 const SkillsMUI = () => {
   const [mounted, setMounted] = useState(false)
   const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
   useEffect(() => {
     setMounted(true)
@@ -185,9 +181,9 @@ const SkillsMUI = () => {
             </Typography>
           </motion.div>
 
-          <Grid container spacing={4}>
+          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', lg: 'row' }, gap: 4 }}>
             {/* Skills Radar Chart */}
-            <Grid item xs={12} lg={6}>
+            <Box sx={{ flex: 1 }}>
               <motion.div variants={itemVariants}>
                 <Card
                   sx={{
@@ -209,13 +205,13 @@ const SkillsMUI = () => {
                   </CardContent>
                 </Card>
               </motion.div>
-            </Grid>
+            </Box>
 
             {/* Skill Categories */}
-            <Grid item xs={12} lg={6}>
-              <Grid container spacing={2}>
-                {skillCategories.map((category, index) => (
-                  <Grid item xs={12} sm={6} key={category.title}>
+            <Box sx={{ flex: 1 }}>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                {skillCategories.map((category) => (
+                  <Box key={category.title}>
                     <motion.div
                       variants={itemVariants}
                       whileHover={{ scale: 1.02, y: -4 }}
@@ -273,11 +269,11 @@ const SkillsMUI = () => {
                         </CardContent>
                       </Card>
                     </motion.div>
-                  </Grid>
+                  </Box>
                 ))}
-              </Grid>
-            </Grid>
-          </Grid>
+              </Box>
+            </Box>
+          </Box>
 
           {/* Key Achievements */}
           <motion.div variants={itemVariants}>
@@ -285,14 +281,14 @@ const SkillsMUI = () => {
               <Typography variant="h4" sx={{ textAlign: 'center', mb: 4, fontWeight: 600 }}>
                 Key Achievements
               </Typography>
-              <Grid container spacing={3}>
+              <Box sx={{ display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 3, flexWrap: 'wrap' }}>
                 {[
                   { metric: '35%', label: 'Performance Improvement', icon: <Speed /> },
                   { metric: '40%', label: 'User Engagement Boost', icon: <BugReport /> },
                   { metric: '30%', label: 'Manual Effort Reduction', icon: <AccountTree /> },
                   { metric: '2+', label: 'Years Experience', icon: <Security /> },
-                ].map((achievement, index) => (
-                  <Grid item xs={12} sm={6} md={3} key={achievement.label}>
+                ].map((achievement) => (
+                  <Box key={achievement.label} sx={{ flex: { xs: 1, sm: '0 0 calc(50% - 8px)', md: '0 0 calc(25% - 12px)' } }}>
                     <motion.div
                       whileHover={{ scale: 1.05, y: -4 }}
                       transition={{ duration: 0.3 }}
@@ -336,11 +332,11 @@ const SkillsMUI = () => {
                         <Typography variant="body2" color="text.secondary">
                           {achievement.label}
                         </Typography>
-                      </Card>
-                    </motion.div>
-                  </Grid>
+                    </Card>
+                  </motion.div>
+                </Box>
                 ))}
-              </Grid>
+              </Box>
             </Box>
           </motion.div>
         </motion.div>

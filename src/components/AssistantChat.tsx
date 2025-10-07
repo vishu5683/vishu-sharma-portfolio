@@ -35,7 +35,7 @@ export default function AssistantChat() {
     {
       id: '1',
       role: 'assistant',
-      content: "Hi! I'm your AI assistant. Ask me anything about Vishu's experience, projects, or skills!",
+      content: "Hi! I&apos;m your AI assistant. Ask me anything about Vishu&apos;s experience, projects, or skills!",
     },
   ])
   const [input, setInput] = useState('')
@@ -100,7 +100,7 @@ export default function AssistantChat() {
       </Typography>
       
       <Typography variant="body1" sx={{ mb: 3, textAlign: 'center', color: 'text.secondary' }}>
-        Ask me anything about Vishu's experience, projects, or technical skills!
+        Ask me anything about Vishu&apos;s experience, projects, or technical skills!
       </Typography>
 
       <Card sx={{ mb: 3, borderRadius: 2 }}>

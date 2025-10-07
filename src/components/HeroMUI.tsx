@@ -6,13 +6,10 @@ import {
   Container,
   Typography,
   Button,
-  Grid,
   Card,
   CardContent,
   Chip,
   Stack,
-  useTheme,
-  useMediaQuery,
 } from '@mui/material'
 import {
   GitHub,
@@ -29,9 +26,7 @@ import { useTheme as useCustomTheme } from './ThemeProvider'
 
 const HeroMUI = () => {
   const [mounted, setMounted] = useState(false)
-  const theme = useTheme()
   const { mode } = useCustomTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
   useEffect(() => {
     setMounted(true)
@@ -207,8 +202,8 @@ const HeroMUI = () => {
           initial="hidden"
           animate="visible"
         >
-          <Grid container spacing={4} alignItems="center">
-            <Grid item xs={12} md={8}>
+          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, alignItems: 'center' }}>
+            <Box sx={{ flex: 1 }}>
               <motion.div variants={itemVariants}>
                 <Typography
                   variant="h1"
@@ -399,9 +394,9 @@ const HeroMUI = () => {
                   ))}
                 </Stack>
               </motion.div>
-            </Grid>
+            </Box>
 
-            <Grid item xs={12} md={4}>
+            <Box sx={{ flex: { xs: 1, md: '0 0 33.333%' } }}>
               <motion.div
                 variants={itemVariants}
                 whileHover={{ scale: 1.02 }}
@@ -460,8 +455,8 @@ const HeroMUI = () => {
                   </CardContent>
                 </Card>
               </motion.div>
-            </Grid>
-          </Grid>
+            </Box>
+          </Box>
         </motion.div>
       </Container>
     </Box>

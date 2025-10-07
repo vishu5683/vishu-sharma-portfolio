@@ -5,7 +5,6 @@ import {
   Box,
   Container,
   Typography,
-  Grid,
   Card,
   CardContent,
   CardActions,
@@ -13,16 +12,12 @@ import {
   Chip,
   Stack,
   useTheme,
-  useMediaQuery,
-  IconButton,
 } from '@mui/material'
 import {
   GitHub,
   OpenInNew,
   TrendingUp,
   People,
-  Speed,
-  Security,
 } from '@mui/icons-material'
 import { motion, Variants } from 'framer-motion'
 import ProjectMetricsBar from './ProjectMetricsBar'
@@ -30,7 +25,6 @@ import ProjectMetricsBar from './ProjectMetricsBar'
 const ProjectsMUI = () => {
   const [mounted, setMounted] = useState(false)
   const theme = useTheme()
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
   useEffect(() => {
     setMounted(true)
@@ -231,9 +225,9 @@ const ProjectsMUI = () => {
           </motion.div>
 
           {/* Projects Grid */}
-          <Grid container spacing={4}>
-            {projects.map((project, index) => (
-              <Grid item xs={12} md={6} key={project.id}>
+          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4, flexWrap: 'wrap' }}>
+            {projects.map((project) => (
+              <Box key={project.id} sx={{ flex: { xs: 1, md: '0 0 calc(50% - 16px)' } }}>
                 <motion.div
                   variants={itemVariants}
                   whileHover={{ scale: 1.02, y: -8 }}
@@ -378,9 +372,9 @@ const ProjectsMUI = () => {
                     </CardActions>
                   </Card>
                 </motion.div>
-              </Grid>
+              </Box>
             ))}
-          </Grid>
+          </Box>
         </motion.div>
       </Container>
     </Box>

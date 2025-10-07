@@ -16,7 +16,6 @@ import {
 } from '@mui/material'
 import { 
   Menu as MenuIcon, 
-  Close as CloseIcon,
   DarkMode as DarkModeIcon,
   LightMode as LightModeIcon,
 } from '@mui/icons-material'
