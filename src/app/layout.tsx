@@ -7,6 +7,7 @@ const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
+  preload: true,
 })
 
 const poppins = Poppins({ 
@@ -14,15 +15,18 @@ const poppins = Poppins({
   weight: ['300', '400', '500', '600', '700', '800'],
   display: 'swap',
   variable: '--font-poppins',
+  preload: true,
 })
 
 const jetbrainsMono = JetBrains_Mono({ 
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-jetbrains-mono',
+  preload: true,
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://vishu-sharma-portfolio.vercel.app'),
   title: 'Vishu Sharma - Full Stack Developer',
   description: 'Full Stack Developer specializing in React.js, Next.js, .NET, and Enterprise Solutions. 2+ years of experience building scalable web applications.',
   keywords: 'Vishu Sharma, Full Stack Developer, React.js, Next.js, .NET, Oracle, Enterprise Solutions, Portfolio',
