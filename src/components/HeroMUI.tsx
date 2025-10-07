@@ -310,17 +310,25 @@ const HeroMUI = () => {
                       href="#contact"
                       startIcon={<Email />}
                       sx={{
-                        background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
-                        color: '#1f2937',
+                        background: mode === 'dark' 
+                          ? 'linear-gradient(135deg, #6366f1 0%, #ec4899 100%)'
+                          : 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
+                        color: mode === 'dark' ? 'white' : '#1f2937',
                         fontWeight: 600,
                         px: 4,
                         py: 1.5,
                         fontSize: '1rem',
-                        boxShadow: '0px 8px 25px rgba(0, 0, 0, 0.15)',
+                        boxShadow: mode === 'dark' 
+                          ? '0px 8px 25px rgba(99, 102, 241, 0.3)'
+                          : '0px 8px 25px rgba(0, 0, 0, 0.15)',
                         '&:hover': {
-                          background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
+                          background: mode === 'dark'
+                            ? 'linear-gradient(135deg, #4f46e5 0%, #db2777 100%)'
+                            : 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
                           transform: 'translateY(-2px)',
-                          boxShadow: '0px 12px 35px rgba(0, 0, 0, 0.2)',
+                          boxShadow: mode === 'dark'
+                            ? '0px 12px 35px rgba(99, 102, 241, 0.4)'
+                            : '0px 12px 35px rgba(0, 0, 0, 0.2)',
                         },
                       }}
                     >

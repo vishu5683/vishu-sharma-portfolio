@@ -48,7 +48,6 @@ const HeaderMUI = () => {
     { name: 'Experience', href: '#experience' },
     { name: 'Projects', href: '#projects' },
     { name: 'Skills', href: '#skills' },
-    { name: 'AI Features', href: '#ai-features' },
     { name: 'Resume', href: '/resume' },
     { name: 'Contact', href: '#contact' },
   ]

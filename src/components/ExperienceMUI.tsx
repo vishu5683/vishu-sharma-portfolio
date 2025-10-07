@@ -1,5 +1,6 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import {
   Box,
   Container,
@@ -16,8 +17,37 @@ import {
   Star,
   Code,
 } from '@mui/icons-material'
+import { motion, Variants } from 'framer-motion'
 
 const ExperienceMUI = () => {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  }
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.4, 0, 0.2, 1],
+      },
+    },
+  }
 
   const experiences = [
     {
@@ -95,40 +125,82 @@ const ExperienceMUI = () => {
     }
   ]
 
+  if (!mounted) {
+    return (
+      <Box
+        id="experience"
+        sx={{
+          py: 8,
+          backgroundColor: 'background.default',
+          textAlign: 'center',
+        }}
+      >
+        <Container maxWidth="lg">
+          <Typography variant="h2" sx={{ mb: 4, fontWeight: 700 }}>
+            Loading...
+          </Typography>
+        </Container>
+      </Box>
+    )
+  }
+
   return (
     <Box id="experience" sx={{ py: 8, backgroundColor: 'background.default' }}>
       <Container maxWidth="lg">
-        <Box sx={{ textAlign: 'center', mb: 8 }}>
-          <Typography variant="h2" sx={{ mb: 2, fontWeight: 700 }}>
-            Experience & Education
-          </Typography>
-          <Box
-            sx={{
-              width: 80,
-              height: 4,
-              background: 'linear-gradient(90deg, #6366f1, #ec4899)',
-              mx: 'auto',
-              mb: 3,
-              borderRadius: 2,
-            }}
-          />
-          <Typography variant="h6" sx={{ color: 'text.secondary', maxWidth: 600, mx: 'auto' }}>
-            My professional journey in full-stack development
-          </Typography>
-        </Box>
-
-        {/* Experience Timeline */}
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 6, mb: 8 }}>
-          {experiences.map((exp, index) => (
-            <Box key={index}>
-              <Card
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <motion.div variants={itemVariants}>
+            <Box sx={{ textAlign: 'center', mb: 8 }}>
+              <Typography
+                variant="h2"
                 sx={{
-                  background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%)',
-                  border: '1px solid rgba(99, 102, 241, 0.1)',
-                  position: 'relative',
-                  overflow: 'hidden',
+                  mb: 2,
+                  fontWeight: 700,
+                  background: 'linear-gradient(135deg, #6366f1 0%, #ec4899 100%)',
+                  backgroundClip: 'text',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
                 }}
               >
+                Experience & Education
+              </Typography>
+              <Box
+                sx={{
+                  width: 80,
+                  height: 4,
+                  background: 'linear-gradient(90deg, #6366f1, #ec4899)',
+                  mx: 'auto',
+                  mb: 3,
+                  borderRadius: 2,
+                }}
+              />
+              <Typography variant="h6" sx={{ color: 'text.secondary', maxWidth: 600, mx: 'auto' }}>
+                My professional journey in full-stack development
+              </Typography>
+            </Box>
+          </motion.div>
+
+          {/* Experience Timeline */}
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 6, mb: 8 }}>
+            {experiences.map((exp, index) => (
+              <motion.div key={index} variants={itemVariants}>
+                <Card
+                  sx={{
+                    background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(236, 72, 153, 0.05) 100%)',
+                    border: '1px solid rgba(99, 102, 241, 0.1)',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      transform: 'translateY(-4px)',
+                      boxShadow: '0px 12px 30px rgba(99, 102, 241, 0.15)',
+                    },
+                  }}
+                >
                 <Box
                   sx={{
                     position: 'absolute',
@@ -220,24 +292,25 @@ const ExperienceMUI = () => {
                   </Box>
                 </CardContent>
               </Card>
-            </Box>
-          ))}
-        </Box>
+              </motion.div>
+            ))}
+          </Box>
 
-        {/* Education & Certifications */}
-        <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4 }}>
-          {/* Education */}
-          <Box sx={{ flex: 1 }}>
-            <Card sx={{ height: '100%' }}>
-              <CardContent sx={{ p: 4 }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
-                  <Avatar sx={{ backgroundColor: 'primary.main' }}>
-                    <School />
-                  </Avatar>
-                  <Typography variant="h5" sx={{ fontWeight: 600 }}>
-                    Education
-                  </Typography>
-                </Box>
+          {/* Education & Certifications */}
+          <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 4 }}>
+            {/* Education */}
+            <Box sx={{ flex: 1 }}>
+              <motion.div variants={itemVariants}>
+                <Card sx={{ height: '100%' }}>
+                  <CardContent sx={{ p: 4 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
+                      <Avatar sx={{ backgroundColor: 'primary.main' }}>
+                        <School />
+                      </Avatar>
+                      <Typography variant="h5" sx={{ fontWeight: 600 }}>
+                        Education
+                      </Typography>
+                    </Box>
                 <Stack spacing={3}>
                   {education.map((edu, index) => (
                     <Box
@@ -260,23 +333,25 @@ const ExperienceMUI = () => {
                       </Typography>
                     </Box>
                   ))}
-                </Stack>
-              </CardContent>
-            </Card>
+                  </Stack>
+                </CardContent>
+              </Card>
+              </motion.div>
             </Box>
 
             {/* Certifications */}
             <Box sx={{ flex: 1 }}>
-            <Card sx={{ height: '100%' }}>
-              <CardContent sx={{ p: 4 }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
-                  <Avatar sx={{ backgroundColor: 'secondary.main' }}>
-                    <Star />
-                  </Avatar>
-                  <Typography variant="h5" sx={{ fontWeight: 600 }}>
-                    Certifications
-                  </Typography>
-                </Box>
+              <motion.div variants={itemVariants}>
+                <Card sx={{ height: '100%' }}>
+                  <CardContent sx={{ p: 4 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
+                      <Avatar sx={{ backgroundColor: 'secondary.main' }}>
+                        <Star />
+                      </Avatar>
+                      <Typography variant="h5" sx={{ fontWeight: 600 }}>
+                        Certifications
+                      </Typography>
+                    </Box>
                 <Stack spacing={2}>
                   {certifications.map((cert, index) => (
                     <Card
@@ -298,11 +373,13 @@ const ExperienceMUI = () => {
                       </Typography>
                     </Card>
                   ))}
-                </Stack>
-              </CardContent>
-            </Card>
+                  </Stack>
+                </CardContent>
+              </Card>
+              </motion.div>
             </Box>
           </Box>
+        </motion.div>
       </Container>
     </Box>
   )
