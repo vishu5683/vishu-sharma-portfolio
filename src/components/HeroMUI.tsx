@@ -370,7 +370,7 @@ const HeroMUI = () => {
               </motion.div>
 
               <motion.div variants={itemVariants}>
-                <Stack direction="row" spacing={2} sx={{ flexWrap: 'wrap', gap: 1 }}>
+                <Stack direction="row" spacing={2} sx={{ flexWrap: 'wrap', gap: 1 , mb: 0.625}}>
                   {socialLinks.map((link) => (
                     <motion.div
                       key={link.name}
