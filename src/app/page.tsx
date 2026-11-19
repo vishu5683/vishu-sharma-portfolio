@@ -59,7 +59,7 @@ export default function Home() {
             {profile.name}
             <span className="role">{profile.role}</span>
           </h1>
-          <p className="lead">{profile.summary}</p>
+          <p className="lead">{profile.intro}</p>
           <div className="cta">
             <a className="btn" href={profile.resume} download>
               <Download size={18} /> Download resume

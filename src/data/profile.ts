@@ -9,6 +9,8 @@ export const profile = {
   linkedin: 'https://linkedin.com/in/vishu-s-314661ab',
   leetcode: 'https://leetcode.com/vishu5683',
   resume: '/resume-ats.pdf',
+  intro:
+    'I build production web apps end to end, from Oracle and ASP.NET Core APIs to React front ends. 3.5+ years across enterprise logistics and EdTech, most recently AI document extraction and a Yard Management System at TCI Group.',
   summary:
     'Full Stack Developer with 3.5+ years building production web applications with C#, ASP.NET Core Web API, React and TypeScript across enterprise logistics and EdTech. I own features end to end (database, API, UI) and I am strong in REST API design, Clean Architecture, RBAC, Oracle/SQL and third-party integrations.',
 }
