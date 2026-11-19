@@ -81,7 +81,23 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
 
-.hero { padding-top: 96px; padding-bottom: 32px; }
+.hero { padding-top: 56px; padding-bottom: 32px; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 48px; align-items: center; }
+.now-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 26px;
+  box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 12px;
+  background-image: radial-gradient(320px 160px at 100% 0%, color-mix(in srgb, var(--accent-2) 14%, transparent), transparent);
+}
+.now-label { display: inline-flex; align-items: center; gap: 8px; margin: 0; font-size: 0.8rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.now-card h2 { font-size: 1.25rem; font-weight: 800; }
+.now-card .company { margin: 0; }
+.now-list { display: grid; gap: 8px; margin: 4px 0; }
+.now-list li { position: relative; padding-left: 18px; color: var(--muted); font-size: 0.92rem; }
+.now-list li::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 6px; height: 6px; border-radius: 2px; background: var(--accent); }
+@media (max-width: 1024px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .now-card { max-width: 560px; }
+}
 .eyebrow {
   display: inline-flex; align-items: center; gap: 8px; margin: 0 0 24px;
   font-size: 0.85rem; color: var(--muted);
@@ -191,7 +207,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .nav nav::-webkit-scrollbar { display: none; }
   .skill-list div { grid-template-columns: 1fr; gap: 2px; }
   .resume { padding-top: 32px; }
-  .hero { padding-top: 56px; }
+  .hero { padding-top: 32px; }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .skill-row { grid-template-columns: 1fr; gap: 10px; }
   .two-col { grid-template-columns: 1fr; }
@@ -210,4 +226,22 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .nav, .cta, .footer { display: none; }
   .resume { padding-top: 0; }
   .resume-item, .job, .card { break-inside: avoid; }
+}
+
+@media (min-width: 1440px) {
+  .wrap { max-width: 1240px; padding-left: 32px; padding-right: 32px; }
+  .resume.wrap { max-width: 960px; }
+  .hero-grid { grid-template-columns: minmax(0, 1fr) 400px; gap: 64px; }
+}
+@media (min-width: 1800px) {
+  html { font-size: 17px; }
+  .wrap { max-width: 1400px; }
+  .resume.wrap { max-width: 1040px; }
+  .hero-grid { grid-template-columns: minmax(0, 1fr) 440px; }
+}
+@media (min-width: 2400px) {
+  html { font-size: 19px; }
+  .wrap { max-width: 1640px; }
+  .resume.wrap { max-width: 1200px; }
+  .hero-grid { grid-template-columns: minmax(0, 1fr) 500px; }
 }

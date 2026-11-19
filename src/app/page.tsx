@@ -50,6 +50,8 @@ export default function Home() {
 
       <main id="top">
         <section className="hero wrap">
+          <div className="hero-grid">
+          <div>
           <p className="eyebrow">
             <span className="dot" /> Open to full stack roles
           </p>
@@ -75,6 +77,26 @@ export default function Home() {
           <p className="meta">
             <MapPin size={15} /> {profile.location} &nbsp;·&nbsp; {profile.tagline}
           </p>
+          </div>
+
+          <aside className="now-card" aria-label="Current role">
+            <p className="now-label">
+              <span className="dot" /> Currently
+            </p>
+            <h2>{experience[0].role}</h2>
+            <p className="company">{experience[0].company}</p>
+            <ul className="now-list">
+              <li>AI order extraction with AWS Textract + GPT-4</li>
+              <li>Yard Management for Tata, Hyundai &amp; MG yards</li>
+              <li>150+ legacy screens moved to React + .NET Core</li>
+            </ul>
+            <ul className="tags">
+              {experience[0].stack.slice(0, 6).map((t) => (
+                <li key={t}>{t}</li>
+              ))}
+            </ul>
+          </aside>
+          </div>
 
           <dl className="stats">
             {stats.map((s) => (
