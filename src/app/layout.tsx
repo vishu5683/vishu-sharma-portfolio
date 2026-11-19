@@ -1,98 +1,45 @@
-import type { Metadata } from 'next'
-import { Inter, Poppins, JetBrains_Mono } from 'next/font/google'
+import type { Metadata, Viewport } from 'next'
 import './globals.css'
-import ThemeProvider from '@/components/ThemeProvider'
 
-const inter = Inter({ 
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-  preload: true,
-})
-
-const poppins = Poppins({ 
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
-  display: 'swap',
-  variable: '--font-poppins',
-  preload: true,
-})
-
-const jetbrainsMono = JetBrains_Mono({ 
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-jetbrains-mono',
-  preload: true,
-})
+const description =
+  'Vishu Sharma, Full Stack Developer (C#, ASP.NET Core, React, TypeScript, Oracle) with 3.5+ years building production apps in enterprise logistics and EdTech.'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://vishu-sharma-portfolio.vercel.app'),
-  title: 'Vishu Sharma - Full Stack Developer',
-  description: 'Full Stack Developer specializing in React.js, Next.js, .NET, and Enterprise Solutions. 2+ years of experience building scalable web applications.',
-  keywords: 'Vishu Sharma, Full Stack Developer, React.js, Next.js, .NET, Oracle, Enterprise Solutions, Portfolio',
+  title: 'Vishu Sharma | Full Stack Developer',
+  description,
+  keywords: [
+    'Vishu Sharma', 'Full Stack Developer', 'React', 'Angular', 'ASP.NET Core', '.NET Core', 'C#',
+    'TypeScript', 'Oracle', 'PL/SQL', 'AWS Textract', 'OpenAI', 'Gurugram',
+  ],
   authors: [{ name: 'Vishu Sharma' }],
   openGraph: {
-    title: 'Vishu Sharma - Full Stack Developer',
-    description: 'Full Stack Developer specializing in React.js, Next.js, .NET, and Enterprise Solutions.',
-    type: 'website',
+    title: 'Vishu Sharma | Full Stack Developer',
+    description,
+    type: 'profile',
     locale: 'en_US',
-    url: 'https://vishusharma.dev',
-    siteName: 'Vishu Sharma Portfolio',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Vishu Sharma - Full Stack Developer',
-      },
-    ],
+    siteName: 'Vishu Sharma',
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Vishu Sharma - Full Stack Developer',
-    description: 'Full Stack Developer specializing in React.js, Next.js, .NET, and Enterprise Solutions.',
-    images: ['/og-image.jpg'],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  alternates: {
-    canonical: 'https://vishusharma.dev',
-  },
+  twitter: { card: 'summary', title: 'Vishu Sharma | Full Stack Developer', description },
+  robots: { index: true, follow: true },
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: '#0b1120' },
+    { media: '(prefers-color-scheme: light)', color: '#f7f8fb' },
+  ],
+}
+
+const themeScript = `try{var t=localStorage.getItem('theme');if(!t)t=matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';document.documentElement.dataset.theme=t}catch(e){}`
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-        />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        />
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
-      <body className={inter.className}>
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
-      </body>
+      <body>{children}</body>
     </html>
   )
 }
