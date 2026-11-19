@@ -80,6 +80,15 @@ export const projects = [
     link: 'https://github.com/vishu5683',
   },
   {
+    title: 'NSE Stocks Pro',
+    kind: 'Side project · Live',
+    description:
+      'NSE F&O stock screener and market dashboard: indices, breadth, sector heatmap, 259-stock screener with presets and ATR-based trade ideas, Excel/PDF reports, and live Upstox prices behind a server-side token. Python pipeline computes RSI, EMA, MACD, ADX and ATR.',
+    highlights: ['259 F&O stocks', 'Live prices every 5s'],
+    stack: ['React', 'Vite', 'Python', 'Vercel Functions', 'Upstox API', 'GitHub Actions'],
+    link: 'https://nsestock-five.vercel.app',
+  },
+  {
     title: 'Legacy ERP Migration',
     kind: 'TCI Group · Production',
     description:
