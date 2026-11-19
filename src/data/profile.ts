@@ -77,7 +77,7 @@ export const projects = [
       'Chunking, embeddings and pgvector (HNSW) similarity search feed an LLM; answers stream to a React + TypeScript chat UI with source citations. Provider-agnostic client (OpenAI, Gemini, Ollama).',
     highlights: ['26 pytest tests', 'Docker + GitHub Actions CI'],
     stack: ['Python', 'FastAPI', 'React', 'TypeScript', 'PostgreSQL + pgvector'],
-    link: 'https://github.com/vishu5683',
+    link: 'https://github.com/vishu5683/rag-document-assistant',
   },
   {
     title: 'NSE Stocks Pro',

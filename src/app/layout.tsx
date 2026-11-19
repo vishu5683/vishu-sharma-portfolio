@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     siteName: 'Vishu Sharma',
   },
-  twitter: { card: 'summary', title: 'Vishu Sharma | Full Stack Developer', description },
+  twitter: { card: 'summary_large_image', title: 'Vishu Sharma | Full Stack Developer', description },
   robots: { index: true, follow: true },
 }
 
