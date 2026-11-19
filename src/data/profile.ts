@@ -10,7 +10,7 @@ export const profile = {
   leetcode: 'https://leetcode.com/vishu5683',
   resume: '/resume-ats.pdf',
   intro:
-    'Shipped an AI order-extraction pipeline (AWS Textract + GPT-4), a Yard Management System handling 200–300 vehicles/day, and a 150+ screen migration from ASP.NET WebForms to React + ASP.NET Core. 3.5+ years in C#, TypeScript, React and Oracle, owning features from database to UI.',
+    'Full stack engineer with 3.5+ years in C#, ASP.NET Core, React and TypeScript, now building AI-enabled enterprise systems with AWS Textract and OpenAI. Experienced in Clean Architecture, RBAC, Oracle/SQL and third-party integrations, delivering features end to end from database to UI.',
   summary:
     'Full Stack Developer with 3.5+ years building production web applications with C#, ASP.NET Core Web API, React and TypeScript across enterprise logistics and EdTech. I own features end to end (database, API, UI) and I am strong in REST API design, Clean Architecture, RBAC, Oracle/SQL and third-party integrations.',
 }
